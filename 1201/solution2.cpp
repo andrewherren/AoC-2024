@@ -20,9 +20,26 @@ int main() {
     }
 
     // Compute similarity score between the two vectors
+    std::stable_sort(list1.begin(), list1.end());
     int similarity_score = 0;
-    for (const auto& elem : list1) {
-        similarity_score += std::count(list2.begin(), list2.end(), elem);
+    int element_count;
+    int run_length = 1;
+    for (int i = 0; i < list1.size(); i++) {
+        // Determine whether a run is completed
+        bool end_of_run = (
+            (i == list1.size() - 1) || 
+            ((i < list1.size() - 1) ? (list1[i + 1] != list1[i]) : false)
+        );
+        if (end_of_run) {
+            // Write existing counter to similarity score
+            element_count = std::count(list2.begin(), list2.end(), list1[i]);
+            similarity_score += element_count * run_length;
+            // Reset run length
+            run_length = 1;
+        } else {
+            // Increment run length
+            run_length += 1;
+        }
     }
     std::cout << "Similarity score = " << similarity_score << std::endl;
 }
