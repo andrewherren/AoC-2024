@@ -33,7 +33,7 @@ int main() {
         if (end_of_run) {
             // Write existing counter to similarity score
             element_count = std::count(list2.begin(), list2.end(), list1[i]);
-            similarity_score += element_count * run_length;
+            similarity_score += element_count * run_length * list1[i];
             // Reset run length
             run_length = 1;
         } else {
