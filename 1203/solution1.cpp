@@ -23,8 +23,7 @@ int main() {
     std::regex parse2_regex("\\)");
     auto mult_begin = std::sregex_iterator(combined_text.begin(), combined_text.end(), mult_regex);
     auto mult_end = std::sregex_iterator();
-    for (auto i = mult_begin; i != mult_end; ++i)
-    {
+    for (auto i = mult_begin; i != mult_end; ++i) {
         // Extract the "###,###" component of the "mul(###,###)" string
         std::smatch regex_match = *i;
         std::string regex_match_string = regex_match.str();

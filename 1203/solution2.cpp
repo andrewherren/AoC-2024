@@ -24,8 +24,7 @@ int main() {
     bool op_enabled = true;
     auto expr_begin = std::sregex_iterator(combined_text.begin(), combined_text.end(), expr_regex);
     auto expr_end = std::sregex_iterator();
-    for (auto i = expr_begin; i != expr_end; ++i)
-    {
+    for (auto i = expr_begin; i != expr_end; ++i) {
         // Determine whether we are parsing a do/don't switch or a multiplication operation
         std::smatch regex_match = *i;
         std::string regex_match_string = regex_match.str();
