@@ -12,8 +12,6 @@ int main() {
     std::string filename = "1204/input.txt";
     std::fstream filestream(filename, std::ios::in);
     std::string combined_text_rowmajor;
-    std::string combined_text_rowmajor_subset;
-    std::string line_subset;
     int num_rows = 0;
     int num_cols;
     for (std::string line; std::getline(filestream, line);) {
@@ -21,11 +19,9 @@ int main() {
             num_cols = line.size();
         }
         combined_text_rowmajor.append(line);
-        // combined_text_rowmajor.append(line);
         num_rows++;
     }
     std::cout << "The data has " << num_rows << " rows and " << num_cols << " columns" << std::endl;
-
     
     // Re-arrange the data into several formats:
     // (1) "Column major", where element (i,j) is accessed by the (j * num_rows + i) character
